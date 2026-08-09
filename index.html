@@ -1,0 +1,1438 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ژینار ❤️ فروزان</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Vazirmatn:wght@300;400;500;600;700&display=swap");
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --pink: #ff4d78;
+        --pink2: #ff9bb2;
+        --purple: #8b3d72;
+        --bg: #07030a;
+        --card: rgba(255, 255, 255, 0.055);
+        --border: rgba(255, 255, 255, 0.12);
+        --text: #fff;
+        --muted: #bbaab2;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 15% 10%, #421024 0, transparent 28%),
+          radial-gradient(circle at 90% 30%, #32102f 0, transparent 30%),
+          var(--bg);
+        color: var(--text);
+        font-family: Vazirmatn, sans-serif;
+        overflow-x: hidden;
+      }
+
+      button,
+      input {
+        font-family: inherit;
+      }
+
+      /* ================= LOCK ================= */
+
+      #lock {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: radial-gradient(
+          circle at center,
+          #51142d,
+          #160710 45%,
+          #020103
+        );
+        transition: opacity 1s ease;
+      }
+
+      .lock-card {
+        width: min(430px, 100%);
+        padding: 45px 28px;
+        text-align: center;
+        border: 1px solid var(--border);
+        border-radius: 35px;
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(25px);
+        box-shadow: 0 30px 100px #000;
+      }
+
+      .lock-heart {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 25px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #ff4d7815;
+        border: 1px solid #ff4d7845;
+        font-size: 40px;
+        animation: pulse 1.5s infinite;
+      }
+
+      .lock-card h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 36px;
+        font-weight: 500;
+      }
+
+      .lock-card p {
+        color: var(--muted);
+        line-height: 2;
+        font-size: 13px;
+        margin: 12px 0 25px;
+      }
+
+      #password {
+        width: 100%;
+        height: 55px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        outline: none;
+        background: #0006;
+        color: white;
+        text-align: center;
+        font-size: 20px;
+        letter-spacing: 6px;
+      }
+
+      #enter {
+        width: 100%;
+        height: 55px;
+        margin-top: 12px;
+        border: 0;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--pink), #a51d4e);
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      #enter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px #ff4d7840;
+      }
+
+      #error {
+        min-height: 22px;
+        margin-top: 12px;
+        color: #ff829d;
+        font-size: 12px;
+      }
+
+      /* ================= SITE ================= */
+
+      #site {
+        display: none;
+      }
+
+      section {
+        min-height: 85vh;
+        padding: 110px 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .container {
+        width: min(950px, 100%);
+      }
+
+      .card {
+        border: 1px solid var(--border);
+        background: var(--card);
+        backdrop-filter: blur(18px);
+        border-radius: 30px;
+      }
+
+      .label {
+        color: var(--pink2);
+        font-size: 10px;
+        letter-spacing: 4px;
+        margin-bottom: 15px;
+      }
+
+      .title {
+        font-size: clamp(30px, 6vw, 55px);
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+
+      .desc {
+        max-width: 650px;
+        margin: auto;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 2.5;
+      }
+
+      /* ================= HERO ================= */
+
+      .hero {
+        min-height: 100svh;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero:before,
+      .hero:after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        pointer-events: none;
+      }
+
+      .hero:before {
+        width: 420px;
+        height: 420px;
+        background: #ff285c;
+        opacity: 0.13;
+        top: 10%;
+        right: 10%;
+        }
+      .hero:after {
+        width: 350px;
+        height: 350px;
+        background: #9d3d8e;
+        opacity: 0.12;
+        bottom: 10%;
+        left: 10%;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .small-title {
+        color: #d18a9f;
+        letter-spacing: 6px;
+        font-size: 10px;
+        margin-bottom: 28px;
+      }
+
+      .names {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(55px, 14vw, 125px);
+        line-height: 1;
+      }
+
+      .main-heart {
+        display: inline-block;
+        color: var(--pink);
+        animation: pulse 1.2s infinite;
+      }
+
+      .hero-text {
+        max-width: 600px;
+        margin: 35px auto;
+        color: #cbb8bf;
+        line-height: 2.5;
+      }
+
+      .date {
+        color: #89727b;
+        font-size: 12px;
+      }
+
+      .scroll {
+        margin-top: 65px;
+        color: #725d66;
+        font-size: 11px;
+        animation: float 2s infinite;
+      }
+
+      /* ================= COUNTER ================= */
+
+      .counter {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        max-width: 720px;
+        margin: 45px auto 0;
+      }
+
+      .count {
+        padding: 25px 10px;
+      }
+
+      .count strong {
+        display: block;
+        font-size: 30px;
+      }
+
+      .count span {
+        color: #927e87;
+        font-size: 10px;
+      }
+
+      /* ================= STORY ================= */
+
+      .story {
+        padding: 45px 30px;
+        margin-top: 40px;
+        text-align: right;
+        color: #d5c3ca;
+        line-height: 2.9;
+      }
+
+      /* ================= QUESTIONS ================= */
+
+      .questions {
+        display: grid;
+        gap: 18px;
+        max-width: 760px;
+        margin: 45px auto 0;
+      }
+
+      .question {
+        padding: 28px;
+        text-align: right;
+      }
+
+      .question-number {
+        color: var(--pink);
+        font-size: 11px;
+        margin-bottom: 10px;
+      }
+
+      .question h3 {
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 18px;
+      }
+
+      .options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .option {
+        flex: 1 1 calc(50% - 10px);
+        min-height: 50px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        background: #ffffff08;
+        color: #d8c7cd;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .option:hover {
+        border-color: #ff4d7866;
+        background: #ff4d7815;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .option.selected {
+        background: #ff4d7820;
+        border-color: #ff4d78;
+        color: white;
+      }
+
+      /* ================= LOVE QUESTION ================= */
+
+      .love-zone {
+        position: relative;
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        overflow: hidden;
+      }
+
+      .love-btn {
+        border: 0;
+        border-radius: 15px;
+        padding: 14px 28px;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.35s;
+      }
+
+      #yes {
+        background: linear-gradient(135deg, var(--pink), #a51d4e);
+        z-index: 5;
+      }
+
+      #no {
+        background: #ffffff10;
+        border: 1px solid var(--border);
+        color: #ddd;
+        position: relative;
+        z-index: 4;
+      }
+
+      .answer {
+        min-height: 25px;
+        margin-top: 15px;
+        text-align: center;
+        color: var(--pink2);
+        font-size: 13px;
+      }
+
+      /* ================= REASONS ================= */
+
+      .reasons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 45px;
+      }
+
+      .reason {
+        padding: 30px 20px;
+        transition: 0.4s;
+      }
+
+      .reason:hover {
+        transform: translateY(-7px);
+        border-color: #ff4d7845;
+      }
+
+      .reason-icon {
+        font-size: 30px;
+        margin-bottom: 12px;
+      }
+
+      .reason h3 {
+        margin-bottom: 8px;
+      }
+
+      .reason p {
+        color: #9d8991;
+        font-size: 12px;
+        line-height: 2;
+      }
+
+      /* ================= TIMELINE ================= */
+
+      .timeline {
+        max-width: 700px;
+        margin: 50px auto 0;
+        text-align: right;
+        border-right: 1px solid #713043;
+      }
+
+      .event {
+        position: relative;
+        padding: 0 30px 45px;
+      }
+
+      .event:before {
+        content: "";
+        position: absolute;
+        right: -6px;
+        top: 5px;
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--pink);
+        box-shadow: 0 0 20px #ff4d78;
+      }
+
+      .event span {
+        color: var(--pink);
+        font-size: 11px;
+      }
+
+      .event h3 {
+        margin: 8px 0;
+      }
+
+      .event p {
+        color: #9d8991;
+        font-size: 12px;
+        line-height: 2;
+      }
+
+      /* ================= GALLERY ================= */
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 45px;
+      }
+
+      .photo {
+        min-height: 190px;
+        display: grid;
+        place-items: center;
+        align-content: center;
+        border: 1px dashed #ffffff30;
+        border-radius: 25px;
+        background: linear-gradient(145deg, #ffffff08, #ff4d7808);
+        color: #806d75;
+        transition: 0.4s;
+      }
+
+      .photo:hover {
+        transform: scale(1.02);
+        border-color: #ff4d7860;
+      }
+
+      /* ================= LETTER ================= */
+
+      .letter {
+        padding: 45px 30px;
+        margin-top: 40px;
+        color: #d8c6cd;
+        line-height: 2.9;
+        text-align: right;
+      }
+
+      /* ================= MUSIC ================= */
+
+      .music {
+        padding: 40px 25px;
+        margin-top: 40px;
+      }
+
+      .disc {
+        width: 95px;
+        height: 95px;
+        margin: auto;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--pink), #70213f);
+        font-size: 34px;
+        animation: spin 8s linear infinite;
+      }
+
+      .music h3 {
+        margin: 20px 0 8px;
+      }
+
+      .music p {
+        color: #8d7981;
+        font-size: 11px;
+        line-height: 2;
+      }
+
+      /* ================= FUTURE ================= */
+
+      .future {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 45px;
+      }
+
+      .future-box {
+        padding: 30px 15px;
+      }
+
+      .future-box .icon {
+        font-size: 32px;
+      }
+
+      .future-box h3 {
+        margin: 15px 0 8px;
+      }
+
+      .future-box p {
+        color: #98838b;
+        font-size: 11px;
+        line-height: 2;
+      }
+
+      /* ================= FINAL ================= */
+
+      .final {
+        min-height: 100svh;
+      }
+
+      .final-card {
+        padding: 65px 25px;
+      }
+
+      .final-heart {
+        font-size: 65px;
+        color: var(--pink);
+        animation: pulse 1.3s infinite;
+      }
+
+      .final-card h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(42px, 9vw, 72px);
+        margin: 20px 0;
+      }
+
+      .final-card p {
+        color: #c5b1b8;
+        line-height: 2.5;
+      }
+
+      .final-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .final-button {
+        border: 0;
+        border-radius: 15px;
+        padding: 14px 25px;
+        background: linear-gradient(135deg, var(--pink), #a51d4e);
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .final-button:hover {
+        transform: translateY(-3px);
+      }
+
+      #finalAnswer {
+        min-height: 25px;
+        margin-top: 20px;
+        color: var(--pink2);
+      }
+
+      /* ================= FOOTER ================= */
+
+      footer {
+        padding: 60px 20px;
+        text-align: center;
+        color: #66535d;
+        font-size: 11px;
+        line-height: 2;
+      }
+
+      /* ================= HEARTS ================= */
+
+      .floating-heart {
+        position: fixed;
+        bottom: -30px;
+        z-index: 1000;
+        pointer-events: none;
+        color: #ff527b;
+        animation: rise linear forwards;
+      }
+
+      /* ================= ANIMATIONS ================= */
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        15% {
+          transform: scale(1.18);
+        }
+        30% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        50% {
+          transform: translateY(8px);
+        }
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes rise {
+        from {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        15% {
+          opacity: 0.8;
+        }
+        to {
+          transform: translateY(-110vh) translateX(var(--x));
+          opacity: 0;
+        }
+      }
+
+      /* ================= MOBILE ================= */
+
+      @media (max-width: 650px) {
+        section {
+          padding: 80px 16px;
+        }
+
+        .counter {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .reasons {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .future {
+          grid-template-columns: 1fr;
+        }
+
+        .photo {
+          min-height: 145px;
+        }
+
+        .option {
+          flex: 1 1 100%;
+        }
+
+        .love-zone {
+          min-height: 170px;
+        }
+
+        .names {
+          font-size: clamp(48px, 14vw, 90px);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ================= PASSWORD ================= -->
+
+    <div id="lock">
+      <div class="lock-card">
+        <div class="lock-heart">♥</div>
+
+        <h1>دنیای ما</h1>
+
+        <p>
+          اینجا فقط برای دو نفره...
+          <br />
+          رمز ورود را وارد کن ❤️
+        </p>
+
+        <input
+          id="password"
+          type="password"
+          maxlength="8"
+          inputmode="numeric"
+          placeholder="••••••••"
+          autocomplete="off"
+        />
+
+        <button id="enter">ورود به دنیای ژینار و فروزان ❤️</button>
+
+        <div id="error"></div>
+      </div>
+    </div>
+
+    <!-- ================= MAIN SITE ================= -->
+
+    <main id="site">
+      <!-- HERO -->
+
+      <section class="hero">
+        <div class="container hero-content">
+          <div class="small-title">OUR LITTLE UNIVERSE</div>
+
+          <div class="names">
+            ژینار
+            <span class="main-heart">♥</span>
+            فروزان
+          </div>
+
+          <p class="hero-text">
+            بعضی آدم‌ها وارد زندگی ما نمی‌شوند که فقط یک خاطره باشند...
+            <br />
+            می‌آیند تا خودِ داستان زندگی‌مان شوند.
+          </p>
+
+          <div class="date">۱۶ دی ۱۴۰۴</div>
+
+          <div class="scroll">↓ داستان ما را ادامه بده</div>
+        </div>
+      </section>
+
+      <!-- COUNTER -->
+
+      <section>
+        <div class="container">
+          <div class="label">OUR TIME</div>
+
+          <h2 class="title">از آن روز تا امروز...</h2>
+       <p class="desc">
+            هر لحظه‌ای که می‌گذرد، یک لحظه‌ی بیشتر از داستان ما ساخته می‌شود.
+          </p>
+
+          <div class="counter">
+            <div class="card count">
+              <strong id="days">0</strong>
+              <span>روز</span>
+            </div>
+
+            <div class="card count">
+              <strong id="hours">0</strong>
+              <span>ساعت</span>
+            </div>
+
+            <div class="card count">
+              <strong id="minutes">0</strong>
+              <span>دقیقه</span>
+            </div>
+
+            <div class="card count">
+              <strong id="seconds">0</strong>
+              <span>ثانیه</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STORY -->
+
+      <section>
+        <div class="container">
+          <div class="label">CHAPTER ONE</div>
+
+          <h2 class="title">همه‌چیز از یک تاریخ شروع شد</h2>
+
+          <div class="card story">
+            ۱۶ دی ۱۴۰۴ شاید برای خیلی‌ها فقط یک تاریخ باشد، اما برای من یک
+            نقطه‌ی شروع است.
+
+            <br /><br />
+
+            روزی که اسم فروزان برای من دیگر فقط یک اسم نبود. تبدیل شد به یک حس،
+            یک لبخند، یک فکر همیشگی...
+
+            <br /><br />
+
+            شاید هنوز اول داستان باشیم، اما من از همین اولش می‌دانم که دوست
+            ندارم آخرش را ببینم. ❤️
+          </div>
+        </div>
+      </section>
+
+      <!-- QUESTIONS -->
+
+      <section>
+        <div class="container">
+          <div class="label">A LITTLE GAME</div>
+
+          <h2 class="title">حالا چند سؤال از تو دارم...</h2>
+
+          <p class="desc">
+            جواب درست و غلطی وجود ندارد. فقط چیزی را انتخاب کن که قلبت می‌گوید.
+            ❤️
+          </p>
+
+          <div class="questions">
+            <!-- QUESTION 1 -->
+
+            <div class="card question">
+              <div class="question-number">سؤال اول</div>
+
+              <h3>اگر رابطه‌ی ما یک رنگ بود، چه رنگی بود؟</h3>
+
+              <div class="options">
+                <button class="option">❤️ قرمز؛ پر از عشق</button>
+
+                <button class="option">🌸 صورتی؛ لطیف</button>
+
+                <button class="option">🌌 بنفش؛ خاص</button>
+
+                <button class="option">🖤 مشکی؛ عمیق</button>
+              </div>
+            </div>
+
+            <!-- QUESTION 2 -->
+
+            <div class="card question">
+              <div class="question-number">سؤال دوم</div>
+
+              <h3>اگر یک آرزو برای ما داشته باشی، چیست؟</h3>
+
+              <div class="options">
+                <button class="option">همیشه کنار هم باشیم ❤️</button>
+
+                <button class="option">خاطرات زیادی بسازیم</button>
+
+                <button class="option">هیچ‌وقت همدیگر را از دست ندهیم</button>
+
+                <button class="option">همه‌ی این‌ها</button>
+              </div>
+            </div>
+
+            <!-- QUESTION 3 -->
+
+            <div class="card question">
+              <div class="question-number">سؤال سوم</div>
+
+              <h3>فکر می‌کنی داستان ما به کجا می‌رسد؟</h3>
+
+              <div class="options">
+                <button class="option">یک خاطره‌ی قشنگ</button>
+
+                <button class="option">یک داستان طولانی</button>
+
+                <button class="option">یک عمر کنار هم</button>
+
+                <button class="option">پایانش را نمی‌خواهم ❤️</button>
+              </div>
+            </div>
+
+            <!-- LOVE QUESTION -->
+
+            <div class="card question">
+              <div class="question-number">سؤال چهارم ❤️</div>
+
+              <h3>منو دوست داری؟</h3>
+
+              <div class="love-zone">
+                <button id="yes" class="love-btn">❤️ بله</button>
+
+                <button id="no" class="love-btn">❌ خیر</button>
+              </div>
+
+              <div id="loveAnswer" class="answer"></div>
+            </div>
+
+            <!-- FOREVER -->
+
+            <div class="card question">
+              <div class="question-number">سؤال پنجم ♾️</div>
+
+              <h3>تا کی منو دوست داری؟</h3>
+
+              <div class="options">
+                <button class="option forever-option">❤️ تا ابد</button>
+
+                <button class="option forever-option">
+                  ♾️ تا روزی که مرگ من و تو رو از هم جدا کنه
+                </button>
+              </div>
+
+              <div id="foreverAnswer" class="answer"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY YOU -->
+
+      <section>
+        <div class="container">
+          <div class="label">WHY YOU?</div>
+
+          <h2 class="title">چرا تو؟</h2>
+
+          <p class="desc">
+            شاید نتوانم تمام دلایلم را اینجا بنویسم، اما چندتایشان را می‌توانم
+            نگه دارم.
+          </p>
+
+          <div class="reasons">
+            <div class="card reason">
+              <div class="reason-icon">🌹</div>
+              <h3>لبخندت</h3>
+              <p>بعضی لبخندها حال آدم را عوض می‌کنند.</p>
+            </div>
+
+            <div class="card reason">
+              <div class="reason-icon">✨</div>
+              <h3>خودت</h3>
+              <p>لازم نیست شبیه هیچ‌کس باشی. خودت بودن کافی است.</p>
+            </div>
+
+            <div class="card reason">
+              <div class="reason-icon">🫀</div>
+              <h3>حسی که می‌دهی</h3>
+              <p>حضورت بعضی روزها را زیباتر می‌کند.</p>
+            </div>
+
+            <div class="card reason">
+              <div class="reason-icon">🌙</div>
+              <h3>فکر کردن به تو</h3>
+              <p>حتی وسط شلوغ‌ترین روزها هم به یادت می‌افتم.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+
+      <section>
+        <div class="container">
+          <div class="label">OUR STORY</div>
+
+          <h2 class="title">فصل‌های داستان ما</h2>
+
+          <div class="timeline">
+            <div class="event">
+              <span>۱۶ دی ۱۴۰۴</span>
+
+              <h3>اولین صفحه</h3>
+
+              <p>روزی که داستان ما شروع شد.</p>
+            </div>
+
+            <div class="event">
+              <span>فصل بعدی</span>
+
+              <h3>اولین خاطرات</h3>
+
+              <p>اینجا بعداً خاطرات واقعی خودمان را اضافه می‌کنیم.</p>
+            </div>
+
+            <div class="event">
+              <span>ادامه دارد...</span>
+
+              <h3>بهترین قسمت هنوز نرسیده</h3>
+
+              <p>چون داستان ما هنوز تمام نشده.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHOTOS -->
+
+      <section>
+        <div class="container">
+          <div class="label">OUR MEMORIES</div>
+
+          <h2 class="title">جای خاطرات ما</h2>
+
+          <p class="desc">
+            فعلاً اینجا خالی می‌ماند... تا عکس‌های خودمان را به آن اضافه کنیم.
+            📸❤️
+          </p>
+
+          <div class="gallery">
+            <div class="photo">
+              📷
+              <br />
+              جای عکس اول
+            </div>
+
+            <div class="photo">
+              📷
+              <br />
+              جای عکس دوم
+            </div>
+
+            <div class="photo">
+              📷
+              <br />
+              جای عکس سوم
+            </div>
+
+            <div class="photo">
+              📷
+              <br />
+              جای عکس چهارم
+            </div>
+
+            <div class="photo">
+              📷
+              <br />
+              جای عکس پنجم
+            </div>
+
+            <div class="photo">
+              📷
+              <br />
+              جای عکس ششم
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LETTER -->
+
+      <section>
+        <div class="container">
+          <div class="label">A LETTER FOR YOU</div>
+
+          <h2 class="title">برای فروزان...</h2>
+
+          <div class="card letter">
+            فروزان عزیزم...
+
+            <br /><br />
+
+            نمی‌دانم بعضی احساس‌ها را چطور باید توضیح داد. بعضی چیزها را فقط
+            می‌شود حس کرد.
+
+            <br /><br />
+
+            تو برای من فقط یک اسم نیستی. تو یک حس، یک لبخند، و یکی از قشنگ‌ترین
+            قسمت‌های روزهای منی.
+
+            <br /><br />
+
+            شاید این صفحه فقط چند خط کد باشد، اما تمام چیزی که پشت آن است، یک
+            احساس واقعی است.
+
+            <br /><br />
+
+            اگر این صفحه یک داستان باشد، من اصلاً دوست ندارم به صفحه‌ی آخرش
+            برسیم.
+
+            <br /><br />
+
+            دوستت دارم، فروزان. ❤️
+          </div>
+        </div>
+      </section>
+
+      <!-- MUSIC -->
+
+      <section>
+        <div class="container">
+          <div class="label">OUR SONG</div>
+
+          <h2 class="title">آهنگ ما</h2>
+
+          <div class="card music">
+            <div class="disc">♪</div>
+
+            <h3>جای آهنگ ما</h3>
+
+            <p>
+              این قسمت فعلاً خالی است. بعداً آهنگ موردنظرمان را اینجا قرار
+              می‌دهیم. 🎵
+            </p>
+
+            <!--
+      بعداً فایل آهنگ را اینجا قرار بده:
+
+      <audio controls>
+        <source src="music.mp3" type="audio/mpeg">
+      </audio>
+      -->
+          </div>
+        </div>
+      </section>
+
+      <!-- FUTURE -->
+
+      <section>
+        <div class="container">
+          <div class="label">THE FUTURE</div>
+
+          <h2 class="title">چیزهایی که هنوز اتفاق نیفتاده‌اند...</h2>
+
+          <p class="desc">شاید قشنگ‌ترین خاطرات ما هنوز ساخته نشده باشند.</p>
+
+          <div class="future">
+            <div class="card future-box">
+              <div class="icon">🌅</div>
+
+              <h3>اولین سفر</h3>
+
+              <p>یک روز اینجا خاطره‌ی سفرمان را می‌گذاریم.</p>
+            </div>
+
+            <div class="card future-box">
+              <div class="icon">📸</div>
+
+              <h3>اولین عکس خاص</h3>
+
+              <p>عکسی که بعدها با دیدنش لبخند می‌زنیم.</p>
+            </div>
+
+            <div class="card future-box">
+              <div class="icon">♾️</div>
+
+              <h3>ادامه‌ی داستان</h3>
+
+              <p>این قسمت هنوز نوشته نشده...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL -->
+
+      <section class="final">
+        <div class="container">
+          <div class="card final-card">
+            <div class="final-heart">♥</div>
+
+            <h2>فروزان...</h2>
+
+            <p>
+              اگر این صفحه یک روز تمام شود، داستان ما نباید تمام شود.
+
+              <br /><br />
+
+              حاضری ادامه‌ی این داستان را با من بنویسی؟
+            </p>
+
+            <div class="final-buttons">
+              <button class="final-button" id="finalYes">آره ❤️</button>
+
+              <button class="final-button" id="finalForever">
+                تا همیشه ♾️
+              </button>
+            </div>
+
+            <div id="finalAnswer"></div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        یک صفحه کوچک برای یک احساس بزرگ.
+
+        <br />
+
+        ساخته شده با عشق برای فروزان، از طرف ژینار ❤️
+      </footer>
+    </main>
+
+    <script>
+      /* ================= PASSWORD ================= */
+
+      const PASSWORD = "13871388";
+
+      const lock = document.getElementById("lock");
+      const password = document.getElementById("password");
+      const enter = document.getElementById("enter");
+      const error = document.getElementById("error");
+      const site = document.getElementById("site");
+
+      function unlock() {
+        if (password.value === PASSWORD) {
+          error.textContent = "";
+
+          lock.style.opacity = "0";
+
+          setTimeout(function () {
+            lock.style.display = "none";
+            site.style.display = "block";
+
+            window.scrollTo({
+              top: 0,
+              behavior: "instant",
+            });
+          }, 800);
+        } else {
+          error.textContent = "رمز اشتباهه... دوباره امتحان کن ❤️";
+
+          password.value = "";
+
+          password.focus();
+        }
+      }
+
+      enter.addEventListener("click", unlock);
+
+      password.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          unlock();
+        }
+      });
+
+      /* ================= COUNTER ================= */
+
+      /*
+  تاریخ شروع:
+  ۱۶ دی ۱۴۰۴
+  برابر با ۶ ژانویه ۲۰۲۶
+*/
+
+      const startDate = new Date(2026, 0, 6, 0, 0, 0);
+
+      function updateCounter() {
+        const now = new Date();
+
+        let difference = now - startDate;
+
+        if (difference < 0) {
+          difference = 0;
+        }
+
+        const days = Math.floor(difference / 86400000);
+
+        const hours = Math.floor(difference / 3600000) % 24;
+
+        const minutes = Math.floor(difference / 60000) % 60;
+
+        const seconds = Math.floor(difference / 1000) % 60;
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+      }
+
+      updateCounter();
+
+      setInterval(updateCounter, 1000);
+
+      /* ================= NORMAL QUESTIONS ================= */
+
+      const options = document.querySelectorAll(".option");
+
+      options.forEach(function (option) {
+        if (option.id !== "yes" && option.id !== "no") {
+          option.addEventListener("click", function () {
+            const parent = option.closest(".question");
+
+            parent.querySelectorAll(".option").forEach(function (button) {
+              button.classList.remove("selected");
+            });
+
+            option.classList.add("selected");
+          });
+        }
+      });
+
+      /* ================= LOVE GAME ================= */
+
+      const yes = document.getElementById("yes");
+      const no = document.getElementById("no");
+      const loveAnswer = document.getElementById("loveAnswer");
+
+      let yesSize = 1;
+
+      function noEscape() {
+        yesSize += 0.35;
+
+        yes.style.transform = "scale(" + yesSize + ")";
+
+        const maxX = 100;
+        const maxY = 55;
+
+        const x = Math.random() * maxX * 2 - maxX;
+
+        const y = Math.random() * maxY * 2 - maxY;
+
+        no.style.transform = "translate(" + x + "px," + y + "px)";
+
+        loveAnswer.textContent = "گزینه «خیر» ظاهراً قابل انتخاب نیست 😌❤️";
+      }
+
+      no.addEventListener("mouseenter", noEscape);
+      no.addEventListener("click", noEscape);
+
+      yes.addEventListener("click", function () {
+        yesSize = 1;
+
+        yes.style.transform = "scale(1)";
+        no.style.transform = "translate(0,0)";
+
+        loveAnswer.textContent = "می‌دونستم! ❤️ حالا لبخند بزن فروزان.";
+
+        createHearts(15);
+      });
+
+      /* ================= FOREVER ================= */
+
+      const foreverOptions = document.querySelectorAll(".forever-option");
+
+      foreverOptions.forEach(function (button) {
+        button.addEventListener("click", function () {
+          foreverOptions.forEach(function (item) {
+            item.classList.remove("selected");
+          });
+
+          button.classList.add("selected");
+
+          document.getElementById("foreverAnswer").textContent =
+            "این جواب رو دوست داشتم... ♾️❤️";
+
+          createHearts(8);
+        });
+      });
+
+      /* ================= FINAL ================= */
+
+      document
+        .getElementById("finalYes")
+        .addEventListener("click", function () {
+          document.getElementById("finalAnswer").textContent =
+            "پس بیا این داستان رو قشنگ‌تر از همیشه ادامه بدیم. ❤️";
+
+          createHearts(20);
+        });
+
+      document
+        .getElementById("finalForever")
+        .addEventListener("click", function () {
+          document.getElementById("finalAnswer").textContent =
+            "پس قرارمون شد... تا همیشه. ♾️❤️";
+
+          createHearts(25);
+        });
+
+      /* ================= FLOATING HEARTS ================= */
+
+      function createHeart() {
+        const heart = document.createElement("div");
+
+        heart.className = "floating-heart";
+
+        heart.textContent = Math.random() > 0.5 ? "♥" : "❤";
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.fontSize = 12 + Math.random() * 22 + "px";
+
+        heart.style.setProperty("--x", Math.random() * 160 - 80 + "px");
+
+        heart.style.animationDuration = 5 + Math.random() * 5 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function () {
+          heart.remove();
+        }, 10000);
+      }
+
+      function createHearts(amount) {
+        for (let i = 0; i < amount; i++) {
+          setTimeout(function () {
+            createHeart();
+          }, i * 100);
+        }
+      }
+
+      setInterval(function () {
+        if (document.getElementById("site").style.display === "block") {
+          createHeart();
+        }
+      }, 1400);
+    </script>
+  </body>
+            </html>
+                  
+        
